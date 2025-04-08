@@ -254,3 +254,11 @@ h2 {
     font-family: Engravers MT, sans-serif;
     color: #911919ce;
 }
+.Fotos{
+     width: 350px;
+    height: 350px;
+    border: 1px solid #CCCCCC;
+    box-shadow: 0 4px 8px #831530;
+    transition: box-shadow 0.6s ease, transform 0.3s ease;
+}
+    
