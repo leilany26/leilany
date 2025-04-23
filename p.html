@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="es">
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tienda Online</title>
-    <link rel="stylesheet" href="p.css">
+    <link rel="stylesheet" href="h.css">
 </head>
 <body>
  <body bgcolor="#fffbfe "></body>
@@ -18,11 +18,11 @@
         <nav class="menu" id="menu">
             <ul>
                 <li><a href="#"></a></li>
-                <li><a href="#">MUJER</a></li>
+                <li><a href="#">HOGAR</a></li>
 
-                <li><a href="#">HOMBRE</a></li>
-                <li><a href="#">NIÑO</a></li>
-                <li><a href="#">NIÑA</a></li>
+                <li><a href="#">BELLEZA</a></li>
+                <li><a href="#">COCINA</a></li>
+                <li><a href="#">SALUD</a></li>
 
 
                 <form class="form">
@@ -47,7 +47,116 @@
 
             </ul>
         </nav>
-    </header>
+    </header> <br>
+
+    <body>
+        <div class="categorias-container">
+            <!-- 1 -->
+            <div class="categoria">
+                <div class="categoria-imagen-container">
+                    <img src="mujer.jpg" alt="Mujer" class="categoria-imagen">
+                </div>
+                <div class="categoria-titulo">MUJER</div>
+            </div>
+            
+            <!-- 2 -->
+            <div class="categoria">
+                <div class="categoria-imagen-container">
+                    <img src="L.jpEg" alt="LENCERIA" class="categoria-imagen">
+                </div>
+                <div class="categoria-titulo">LENCERIA Y PIJAMAS</div>
+            </div>
+            
+            <!-- 3 -->
+            <div class="categoria">
+                <div class="categoria-imagen-container">
+                    <img src="niña.jpeg" alt="Niños" class="categoria-imagen">
+                </div>
+                <div class="categoria-titulo">NIÑOS</div>
+            </div>
+            
+            <!-- 4 -->
+            <div class="categoria">
+                <div class="categoria-imagen-container">
+                    <img src="hogar.jpeg" alt="Hogar" class="categoria-imagen">
+                </div>
+                <div class="categoria-titulo">HOGAR</div>
+            </div>
+            
+            <!-- 5 -->
+            <div class="categoria">
+                <div class="categoria-imagen-container">
+                    <img src="belleza.jpeg" alt="Belleza" class="categoria-imagen">
+                </div>
+                <div class="categoria-titulo">BELLEZA Y SALUD</div>
+            </div>
+            
+            <!-- 6 -->
+            <div class="categoria">
+                <div class="categoria-imagen-container">
+                    <img src="hombre.jpeg" alt="Hombre" class="categoria-imagen">
+                </div>
+                <div class="categoria-titulo">HOMBRE</div>
+            </div>
+            
+            <!-- 7 -->
+            <div class="categoria">
+                <div class="categoria-imagen-container">
+                    <img src="tops.jpeg" alt="TOPS" class="categoria-imagen">
+                </div>
+                <div class="categoria-titulo">TOPS</div>
+            </div>
+            
+            <!-- 8 -->
+            <div class="categoria">
+                <div class="categoria-imagen-container">
+                    <img src="zapatos.jpeg" alt="ZAPATOS" class="categoria-imagen">
+                </div>
+                <div class="categoria-titulo">ZAPATOS</div>
+            </div>
+            
+            <!-- 9 -->
+            <div class="categoria">
+                <div class="categoria-imagen-container">
+                    <img src="vestidos.jpeg" alt="VESTIDOS" class="categoria-imagen">
+                </div>
+                <div class="categoria-titulo">VESTIDOS</div>
+            </div>
+            
+            <!-- 10 -->
+            <div class="categoria">
+                <div class="categoria-imagen-container">
+                    <img src="accesorios.jpeg" alt="accesorios" class="categoria-imagen">
+                </div>
+                <div class="categoria-titulo">ACCESORIOS DE VESTIR</div>
+            </div>
+            
+            <!-- 11 -->
+            <div class="categoria">
+                <div class="categoria-imagen-container">
+                    <img src="joyeria.jpeg" alt="joyeria" class="categoria-imagen">
+                </div>
+                <div class="categoria-titulo">JOYERIA</div>
+            </div>
+            
+            <!-- 12 -->
+            <div class="categoria">
+                <div class="categoria-imagen-container">
+                    <img src="mascotas.jpeg" alt="MASCOTAS" class="categoria-imagen">
+                </div>
+                <div class="categoria-titulo">MASCOTAS</div>
+            </div>
+        </div>
+    </body>
+  
+    
+
+
+
+
+
+
+    
 
     <main> <br>
         
@@ -66,10 +175,8 @@
             <img src="pa.jpg" alt="imagen8">
             <img src="z.jpg" alt="imagen9">
             <img src="bo.jpg" alt="imagen10"><br>
-            
-            
-            
-        
+
+           
     </main><br>
    
 
@@ -77,7 +184,7 @@
     </body>
     <body>
         <h2 style="text-align : center";><br><br>
-            EN ESTA TIENDA EMCONTRARAS TODO TIPO DE ROPA DE BUENA CALIDAD</h2><br><br>
+            EN ESTA TIENDA ENCONTRARAS TODO TIPO DE ROPA DE BUENA CALIDAD</h2><br><br>
         
             <div class = "fotos">
                 <img src="m.jpg" alt="imagen11">
@@ -86,5 +193,17 @@
 
     </body>
     
-    <script src="p.js"></script>
+    <script src="h.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const imagen1 = document.getElementById("imagen1");
+            const formulario = document.getElementById("formulario-extra");
+    
+            imagen1.addEventListener("click", function () {
+                formulario.style.display = "block";
+                formulario.scrollIntoView({ behavior: "smooth" });
+            });
+        });
+    </script>
+    
 </html>
