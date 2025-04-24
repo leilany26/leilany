@@ -142,7 +142,7 @@ header {
     top: 60px;
     left: 0;
     width: 100%;
-    background: #5c3da5;
+    background: #e4def0;
 }
 
 .menu ul {
@@ -207,9 +207,9 @@ header {
     }
 }
 
-
+/*cuadritos de arriba*/
 body {
-  font-family: 'Arial', sans-serif;
+  font-family:'Times New Roman', Times, serif;
   margin: 0;
   padding: 20px;
   background-color: #f8f9fa;
@@ -341,7 +341,158 @@ h2 {
 .fotos img {
   width: 500px; 
   height: 700px; 
-  object-fit: cover; 
+  object-fit:fill; 
  
+}
+
+
+
+/* iconos*/ 
+.button-container {
+  display: flex;
+  background-color: rgba(254, 255, 254, 0.918);
+  width: 250px;
+  height: 40px;
+  align-items: center;
+  justify-content: space-around;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px,
+        rgba(65, 11, 33, 0.5) 5px 10px 15px;
+}
+
+.button {
+  outline: 0 !important;
+  border: 0 !important;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #411616;
+  transition: all ease-in-out 0.3s;
+  cursor: pointer;
+}
+
+.button:hover {
+  transform: translateY(-3px);
+}
+
+.icon {
+  font-size: 20px;
+}
+
+
+
+
+/*compra carrito*/
+/* Estilos generales */
+.products.container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 25px;
+  padding: 40px;
+}
+
+.card-product {
+  width: calc(20% - 20px);
+  min-width: 180px;
+  border: 1px solid #e0e0e0;
+  border-radius: 20px; /* Bordes más redondeados */
+  padding: 15px;
+  box-sizing: border-box;
+  height: 398px; /* Altura aumentada */
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease; /* Suaviza el efecto hover */
+  background: white;
+}
+
+/* Efecto hover con sombra */
+.card-product:hover {
+  box-shadow: 0 10px 20px rgba(167, 159, 159, 0.932);
+  transform: translateY(-5px);
+}
+
+/* Imagen */
+.card-product img {
+  width: 98%;
+  height: 230px; /* Altura fija para imágenes */
+  object-fit: cover;
+  border-radius: 15px 15px 0 0; /* Redondeo solo arriba */
+}
+
+/* Textos */
+.product-title h1 {
+  font-family:Georgia, 'Times New Roman', Times, serif;
+  font-size: 16px;
+  margin: 20px 0;
+  color: #b11046bb;
+}
+
+
+
+/* Precio original (tachado y gris) */
+.original-price {
+  text-decoration: line-through;
+  color: #999999c7;
+  font-size: 14px;
+  margin: 5px 0;
+}
+
+/* Precio de oferta (rojo y negrita) */
+.discounted-price {
+  color: #ff0000;
+  font-weight: bold;
+  font-size: 18px;
+  margin: 5px 0;
+}
+
+/* Texto "Oferta especial" (ahora "¡Oferta especial!") */
+.greeting {
+  color: #1f9215;
+  font-size: 13px;
+  margin: 5px 0;
+  flex-grow: 1; /* Empuja el botón hacia abajo */
+}
+
+/* Botones */
+.product-button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: auto; /* Fija el botón al final */
+}
+
+.add-to-card {
+  background: #b85475;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-size: 14px;
+  transition: background 0.3s;
+}
+
+.add-to-card:hover {
+  background: #3d1a0f;
+}
+
+/* Icono corazón */
+.fa-heart {
+  color: #bb0505;
+  cursor: pointer;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .card-product { width: calc(25% - 20px); }
+}
+@media (max-width: 900px) {
+  .card-product { width: calc(33.33% - 20px); }
+}
+@media (max-width: 600px) {
+  .card-product { width: calc(50% - 20px); }
 }
 
