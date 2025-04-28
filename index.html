@@ -1,11 +1,578 @@
+<!DOCTYPE html>
 <html>
 <head>
-   <title>"hola"</title>
-   <a href="h.html">inicio</a>
-   <a href="h.css"></a>
-   <a href="h.js"></a>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda Online</title>
+    <link rel="stylesheet" href="h.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+
 </head>
 <body>
-HOLA
+ <body bgcolor="#fffbfe "></body>
+ 
+
+    <header>
+        <div class="logo">LEILANY  :)</div>
+        <button class="menu-toggle" id="menu-toggle">
+            ☰
+        </button>
+        <div class="button-container">
+            <button class="button" onclick="window.location.href='https://www.google.com/'">
+              <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 1024 1024" stroke-width="0" fill="currentColor" stroke="currentColor" class="icon">
+                <path d="M946.5 505L560.1 118.8l-25.9-25.9a31.5 31.5 0 0 0-44.4 0L77.5 505a63.9 63.9 0 0 0-18.8 46c.4 35.2 29.7 63.3 64.9 63.3h42.5V940h691.8V614.3h43.4c17.1 0 33.2-6.7 45.3-18.8a63.6 63.6 0 0 0 18.7-45.3c0-17-6.7-33.1-18.8-45.2zM568 868H456V664h112v204zm217.9-325.7V868H632V640c0-22.1-17.9-40-40-40H432c-22.1 0-40 17.9-40 40v228H238.1V542.3h-96l370-369.7 23.1 23.1L882 542.3h-96.1z"></path>
+              </svg>
+            </button>
+            
+            <button class="button">
+              <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" stroke-width="0" fill="currentColor" stroke="currentColor" class="icon">
+                <path d="M12 2.5a5.5 5.5 0 0 1 3.096 10.047 9.005 9.005 0 0 1 5.9 8.181.75.75 0 1 1-1.499.044 7.5 7.5 0 0 0-14.993 0 .75.75 0 0 1-1.5-.045 9.005 9.005 0 0 1 5.9-8.18A5.5 5.5 0 0 1 12 2.5ZM8 8a4 4 0 1 0 8 0 4 4 0 0 0-8 0Z"></path>
+              </svg>
+            </button>
+            <button class="button">
+              <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" stroke-linejoin="round" stroke-linecap="round" viewBox="0 0 24 24" stroke-width="2" fill="none" stroke="currentColor" class="icon">
+                <circle r="1" cy="21" cx="9"></circle>
+                <circle r="1" cy="21" cx="20"></circle>
+                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+              </svg>
+            </button>
+        </div>
+
+
+
+       
+
+
+        
+
+                <form class="form">
+                    <label for="search">
+                        <input class="input" type="text" required="" placeholder="BUSQUEDA" id="search">
+                        <div class="fancy-bg"></div>
+                        <div class="search">
+                            <svg viewBox="0 0 24 24" aria-hidden="true" class="r-14j79pv r-4qtqp9 r-yyyyoo r-1xvli5t r-dnmrzs r-4wgw6l r-f727ji r-bnwqim r-1plcrui r-lrvibr">
+                                <g>
+                                    <path d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z"></path>
+                                </g>
+                            </svg>
+                        </div>
+                        <button class="close-btn" type="reset">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                               
+                            </svg>
+                        </button>
+                    </label>
+                </form>
+
+            
+        
+    </header> <br>
+
+    <body><br>
+        <div class="categorias-container">
+            <!-- 1 -->
+            <div class="categoria">
+                <div class="categoria-imagen-container">
+                    <img src="mujer.jpg" alt="Mujer" class="categoria-imagen">
+                </div>
+                <div class="categoria-titulo">MUJER</div>
+            </div>
+            
+            <!-- 2 -->
+            <div class="categoria">
+                <div class="categoria-imagen-container">
+                    <img src="L.jpeg" alt="LENCERIA" class="categoria-imagen">
+                </div>
+                <div class="categoria-titulo">LENCERIA Y PIJAMAS</div>
+            </div>
+            
+            <!-- 3 -->
+            <div class="categoria">
+                <div class="categoria-imagen-container">
+                    <img src="niña.jpeg" alt="Niños" class="categoria-imagen">
+                </div>
+                <div class="categoria-titulo">NIÑOS</div>
+            </div>
+            
+            <!-- 4 -->
+            <div class="categoria">
+                <div class="categoria-imagen-container">
+                    <img src="hogar.jpeg" alt="Hogar" class="categoria-imagen">
+                </div>
+                <div class="categoria-titulo">HOGAR</div>
+            </div>
+            
+            <!-- 5 -->
+            <div class="categoria">
+                <div class="categoria-imagen-container">
+                    <img src="belleza.jpeg" alt="Belleza" class="categoria-imagen">
+                </div>
+                <div class="categoria-titulo">BELLEZA Y SALUD</div>
+            </div>
+            
+            <!-- 6 -->
+            <div class="categoria">
+                <div class="categoria-imagen-container">
+                    <img src="hombre.jpeg" alt="Hombre" class="categoria-imagen">
+                </div>
+                <div class="categoria-titulo">HOMBRE</div>
+            </div>
+            
+            <!-- 7 -->
+            <div class="categoria">
+                <div class="categoria-imagen-container">
+                    <img src="tops.jpeg" alt="TOPS" class="categoria-imagen">
+                </div>
+                <div class="categoria-titulo">TOPS</div>
+            </div>
+            
+            <!-- 8 -->
+            <div class="categoria">
+                <div class="categoria-imagen-container">
+                    <img src="zapatos.jpeg" alt="ZAPATOS" class="categoria-imagen">
+                </div>
+                <div class="categoria-titulo">ZAPATOS</div>
+            </div>
+            
+            <!-- 9 -->
+            <div class="categoria">
+                <div class="categoria-imagen-container">
+                    <img src="vestidos.jpeg" alt="VESTIDOS" class="categoria-imagen">
+                </div>
+                <div class="categoria-titulo">VESTIDOS</div>
+            </div>
+            
+            <!-- 10 -->
+            <div class="categoria">
+                <div class="categoria-imagen-container">
+                    <img src="accesorios.jpeg" alt="accesorios" class="categoria-imagen">
+                </div>
+                <div class="categoria-titulo">ACCESORIOS DE VESTIR</div>
+            </div>
+            
+            <!-- 11 -->
+            <div class="categoria">
+                <div class="categoria-imagen-container">
+                    <img src="joyeria.jpeg" alt="joyeria" class="categoria-imagen">
+                </div>
+                <div class="categoria-titulo">JOYERIA</div>
+            </div>
+            
+            <!-- 12 -->
+            <div class="categoria">
+                <div class="categoria-imagen-container">
+                    <img src="mascotas.jpeg" alt="MASCOTAS" class="categoria-imagen">
+                </div>
+                <div class="categoria-titulo">MASCOTAS</div>
+            </div>
+        </div>
+    </body>
+  
+    
+
+
+
+
+
+
+    
+
+    <main> <br>
+        
+       
+        <div class="galeria">
+          
+            <a href ="h1.html"><img src="falda.png" alt=""></a>
+            <a href ="h2.html"><img src="p.jpg" alt=""></a>
+
+           
+
+          
+            <img src="b.jpg" alt="imagen3">
+            <img src="c.jpg" alt="imagen4">
+            <img src="ca.jpg" alt="imagen5">
+            <img src="a.jpg" alt="imagen6">
+            <img src="t.jpg" alt="imagen7">
+            <img src="pa.jpg" alt="imagen8">
+            <img src="z.jpg" alt="imagen9">
+            <img src="bo.jpg" alt="imagen10">
+
+           
+    </main><br>
+   
+
+        </div>
+    </body>
+    <body>
+        <h2 style="text-align : center";><br><br>
+            EN ESTA TIENDA ENCONTRARAS TODO TIPO DE ROPA DE BUENA CALIDAD</h2><br><br>
+        
+            <div class = "fotos">
+                <img src="m.jpg" alt="imagen11">
+        <img src="m2.jpg" alt="imagen12">
+        <img src="m3.jpeg" alt="imagen3">
+        <img src="m4.jpeg" alt="imagen4">
+    </div>
+
+    </body><br>
+
+    <body><br>
+        <h2 style="text-align : center";><br><br>
+        O F E R T A S</h2><br><br>
+        <section class="products container"> 
+
+            <div class="card-product">
+                <img src="pinzas.jpeg" alt=""><br>
+                <div class ="product-title">
+                    <h3> 2 piezas de Pinzas de mujer</h3>
+                    <p class="original-price">$MXN 60.00</p>
+                    <p class="discounted-price">$MXN 35.14</p>
+                </div>
+               
+
+                <div class ="product-button">
+                        <i class="fa-solid fa-heart"></i>
+                        <a href="#" class="add-to-card">AGREGAR A CARRITO</a>
+                </div>
+                   
+                      
+            
+            </div>
+
+            
+            <div class="card-product">
+                <img src="funda1.png" alt=""><br>
+                <div class ="product-title">
+                    <h3> 1 pieza Funda de teléfono</h3>
+                    <p class="original-price">$MXN 54.00</p>
+                    <p class="discounted-price">$MXN 30.24</p>
+                </div>
+                
+
+                <div class ="product-button">
+                        <i class="fa-solid fa-heart"></i>
+                        <a href="#" class="add-to-card">AGREGAR A CARRITO</a>
+                </div>
+                   
+                      
+            
+            </div>
+
+            <div class="card-product">
+                <img src="blusa1.png" alt=""><br>
+                <div class ="product-title">
+                    <h3>  Top corto sin tirantes</h3>
+                    <p class="original-price">$MXN 240.00</p>
+                    <p class="discounted-price">$MXN 153.00</p>
+                </div>
+              
+                <div class ="product-button">
+                        <i class="fa-solid fa-heart"></i>
+                        <a href="#" class="add-to-card">AGREGAR A CARRITO</a>
+                </div>
+                   
+                      
+            
+            </div>
+
+
+            <div class="card-product">
+                <img src="sandalias.png" alt=""><br>
+                <div class ="product-title">
+                    <h3> Sandalias planas retro azules</h3>
+                    <p class="original-price">$MXN 276.00</p>
+                    <p class="discounted-price">$MXN 128.94</p>
+                    
+                </div>
+               
+
+                <div class ="product-button">
+                        <i class="fa-solid fa-heart"></i>
+                        <a href="#" class="add-to-card">AGREGAR A CARRITO</a>
+                </div>
+                   
+                      
+            
+            </div>
+
+
+            <div class="card-product">
+                <img src="parches.png" alt=""><br>
+                <div class ="product-title">
+                    <h3> 360 piezas de parches para el acné </h3>
+                    <p class="original-price">$MXN 43.00</p>
+                    <p class="discounted-price">$MXN 21.67</p>
+                   
+                </div>
+               
+
+                <div class ="product-button">
+                        <i class="fa-solid fa-heart"></i>
+                        <a href="#" class="add-to-card">AGREGAR A CARRITO</a>
+                </div>
+                   
+                      
+            
+            </div>
+
+            <div class="card-product">
+                <img src="cortinas.png" alt=""><br>
+                <div class ="product-title">
+                    <h3> 2 piezas Cortinas con decoración  </h3>
+                    <p class="original-price">$MXN 257.00</p>
+                    <p class="discounted-price">$MXN 192.75</p>
+                   
+                </div>
+               
+
+                <div class ="product-button">
+                        <i class="fa-solid fa-heart"></i>
+                        <a href="#" class="add-to-card">AGREGAR A CARRITO</a>
+                </div>
+                   
+                      
+            
+            </div>
+
+            <div class="card-product">
+                <img src="sheglam.png" alt=""><br>
+                <div class ="product-title">
+                    <h3> Willy wonka | SHEGLAM Colección  </h3>
+                    <p class="original-price">$MXN 1078.00</p>
+                    <p class="discounted-price">$MXN 660.00</p>
+                   
+                </div>
+               
+
+                <div class ="product-button">
+                        <i class="fa-solid fa-heart"></i>
+                        <a href="#" class="add-to-card">AGREGAR A CARRITO</a>
+                </div>
+                   
+                      
+            
+            </div>
+
+            <div class="card-product">
+                <img src="collar.png" alt=""><br>
+                <div class ="product-title">
+                    <h3> Conjunto de 3 piezas collar colgante </h3>
+                    <p class="original-price">$MXN 67.00</p>
+                    <p class="discounted-price">$MXN 28.21</p>
+                   
+                </div>
+               
+
+                <div class ="product-button">
+                        <i class="fa-solid fa-heart"></i>
+                        <a href="#" class="add-to-card">AGREGAR A CARRITO</a>
+                </div>
+                   
+                      
+            
+            </div>
+
+            <div class="card-product">
+                <img src="bolso.png" alt=""><br>
+                <div class ="product-title">
+                    <h3> Bolso de hombro  </h3>
+                    <p class="original-price">$MXN 159.00</p>
+                    <p class="discounted-price">$MXN 110.38</p>
+                   
+                </div>
+               
+
+                <div class ="product-button">
+                        <i class="fa-solid fa-heart"></i>
+                        <a href="#" class="add-to-card">AGREGAR A CARRITO</a>
+                </div>
+                   
+                      
+            
+            </div>
+
+            <div class="card-product">
+                <img src="blusa2.png" alt=""><br>
+                <div class ="product-title">
+                    <h3>Top corto de tirantes nudo delantero </h3>
+                    <p class="original-price">$MXN 220.00</p>
+                    <p class="discounted-price">$MXN 90.86</p>
+                   
+                </div>
+               
+
+                <div class ="product-button">
+                        <i class="fa-solid fa-heart"></i>
+                        <a href="#" class="add-to-card">AGREGAR A CARRITO</a>
+                </div>
+                   
+                      
+            
+            </div>
+
+            <div class="card-product">
+                <img src="llavero.png" alt=""><br>
+                <div class ="product-title">
+                    <h3>Llavero de acrílico para bolso </h3>
+                    <p class="original-price">$MXN 80.00</p>
+                    <p class="discounted-price">$MXN 49.88</p>
+                   
+                </div>
+               
+
+                <div class ="product-button">
+                        <i class="fa-solid fa-heart"></i>
+                        <a href="#" class="add-to-card">AGREGAR A CARRITO</a>
+                </div>
+                   
+                      
+            
+            </div>
+
+            <div class="card-product">
+                <img src="calcetas.png" alt=""><br>
+                <div class ="product-title">
+                    <h3>Paquetes de calcetines casuales </h3>
+                    <p class="original-price">$MXN 105.00</p>
+                    <p class="discounted-price">$MXN 93.00</p>
+                   
+                </div>
+               
+
+                <div class ="product-button">
+                        <i class="fa-solid fa-heart"></i>
+                        <a href="#" class="add-to-card">AGREGAR A CARRITO</a>
+                </div>
+                   
+                      
+            
+            </div>
+
+            <div class="card-product">
+                <img src="pantuflas.png" alt=""><br>
+                <div class ="product-title">
+                    <h3>Pantunflas con diseño </h3>
+                    <p class="original-price">$MXN 450.00</p>
+                    <p class="discounted-price">$MXN 166.17</p>
+                   
+                </div>
+               
+
+                <div class ="product-button">
+                        <i class="fa-solid fa-heart"></i>
+                        <a href="#" class="add-to-card">AGREGAR A CARRITO</a>
+                </div>
+                   
+                      
+            
+            </div>
+
+            <div class="card-product">
+                <img src="delineador.png" alt=""><br>
+                <div class ="product-title">
+                    <h3> SHEGLAM | Delineador De Labios </h3>
+                    <p class="original-price">$MXN 165.00</p>
+                    <p class="discounted-price">$MXN 100.80</p>
+                   
+                </div>
+               
+
+                <div class ="product-button">
+                        <i class="fa-solid fa-heart"></i>
+                        <a href="#" class="add-to-card">AGREGAR A CARRITO</a>
+                </div>
+                   
+                      
+            
+            </div>
+
+            <div class="card-product">
+                <img src="trajeb.png" alt=""><br>
+                <div class ="product-title">
+                    <h3> Conjunto de bikini para mujer </h3>
+                    <p class="original-price">$MXN 458.00</p>
+                    <p class="discounted-price">$MXN 189.15</p>
+                   
+                </div>
+               
+
+                <div class ="product-button">
+                        <i class="fa-solid fa-heart"></i>
+                        <a href="#" class="add-to-card">AGREGAR A CARRITO</a>
+                </div>
+                   
+                      
+            
+            </div>
+
+
+
+            
+
+
+        </section>
+
+       
+         
+
+       
+            <h2> ENCUENTRAME EN:</h2><BR>
+            <ul class="wrapper">
+                <!-- Facebook -->
+                <li class="icon facebook">
+                    <a href="https://www.facebook.com/share/1Krr9EsCci/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" class="social-link">
+                        <span class="tooltip">Facebook</span>
+                        <svg viewBox="0 0 320 512" height="1.2em" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z"/>
+                        </svg>
+                    </a>
+                </li>
+                
+                <!-- Instagram -->
+                <li class="icon instagram">
+                    <a href=" https://www.instagram.com/26.leilany._/" target="_blank" rel="noopener noreferrer" class="social-link">
+                        <span class="tooltip">Instagram</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" height="1.2em" fill="currentColor" class="bi bi-instagram" viewBox="0 0 16 16">
+                            <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"/>
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+         
+
+
+        
+
+
+
+       
+
+
+        
+            <script src="h.js"></script>
+        </body>
+       
 </body>
+
+    
+    <script src="h.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const imagen1 = document.getElementById("imagen1");
+            const formulario = document.getElementById("formulario-extra");
+    
+            imagen1.addEventListener("click", function () {
+                formulario.style.display = "block";
+                formulario.scrollIntoView({ behavior: "smooth" });
+            });
+        });
+
+
+
+        
+    </script>
+    
 </html>
+
