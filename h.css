@@ -5,8 +5,9 @@
     --text-color: #c7033e57;
     --active-color: #ce3091;
     --width-of-input: 200px;
-    --inline-padding-of-input: 1.2em;
+    --inline-padding-of-input: 1.5em;
     --gap: 0.9rem;
+    
   }
   /* form style */
   .form {
@@ -121,7 +122,7 @@
 
 /* Estilos del header */
 header {
-    display: flex;
+    display:flex;
     justify-content: space-between;
     align-items: center;
     background: #aa6161;
@@ -130,7 +131,7 @@ header {
 }
 
 .logo {
-    font-size: 1.5em;
+    font-size: 0.8em;
     font-weight: Goudy Stout rgb(165, 69, 69);
 }
 
@@ -166,22 +167,10 @@ header {
     background: #555;
 }
 
-/* Botón de menú hamburguesa */
-.menu-toggle {
-    background: none;
-    border: none;
-    font-size: 2em;
-    color: white;
-    cursor: pointer;
-}
 
-/* Mostrar el menú cuando se activa */
-.menu.active {
-    display: flex;
-}
 
 /* Estilos para pantallas grandes */
-@media (min-width: 768px) {
+@media (min-width: 500px) {
     .menu {
         display: flex;
         position: static;
@@ -312,38 +301,6 @@ h1 {
 }
 
 /* Estilos para cada imagen */
-.galeria img {
-    width: 350px;
-    height: 350px;
-    border: 1px solid #CCCCCC;
-    box-shadow: 0 4px 8px #831530;
-    transition: box-shadow 0.6s ease, transform 0.3s ease;
-}
-
-/* Efecto al pasar el mouse por encima de la imagen */
-.galeria img:hover {
-    box-shadow: 0 8px 16px rgba(255, 177, 177, 0.747);
-    transform: scale(1.05);
-}
-
-h2 {
-    text-align: center;
-    font-family: Engravers MT, sans-serif;
-    color: #911919ce;
-}
-
-.fotos {
-  display: flex; 
-  gap: 10px; 
-  align-items: center; 
-}
-
-.fotos img {
-  width: 500px; 
-  height: 700px; 
-  object-fit:fill; 
- 
-}
 
 
 
@@ -627,4 +584,106 @@ svg {
 
 
 /*responsivo*/
+@media (max-width: 1024px) {
+  .botones {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+  }
+
+  .card-button, .card-button2 {
+    width: 45%;
+    min-width: 150px;
+    height: auto;
+  }
+
+  .card, .card2, .card3, .card4, .card5, .card6 {
+    height: 180px;
+  }
+
+  .texto-central {
+    font-size: 1rem;
+    padding: 10px;
+  }
+}
+
+@media (max-width: 600px) {
+  .card-button, .card-button2 {
+    width: 100%;
+  }
+
+  .texto-central {
+    font-size: 0.95rem;
+  }
+}
+
+
+/* carrusel*/
+.carousel {
+    position: relative;
+    max-width: 50%;
+    width: 50%;
+    margin: 0 auto;
+    overflow: hidden;
+    aspect-ratio: 3/4; /* Cambiado a una proporción más vertical (3:4) */
+}
+
+.fotos {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    height: 100%; /* Cambiado a 100% en lugar de 200% */
+    width: 100%;
+}
+
+.fotos img {
+    width: 100%;
+    height: 100%;
+    flex-shrink: 0;
+    display: none;
+    object-fit: cover;
+    object-position: center;
+}
+
+.fotos img.active {
+    display: block;
+}
+
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 15px;
+    font-size: 18px;
+    border-radius: 50%;
+    z-index: 10;
+    transition: background-color 0.3s;
+}
+
+.carousel-btn:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.prev {
+    left: 10px;
+}
+
+.next {
+    right: 10px;
+}
+
+/* Media Query para pantallas pequeñas */
+@media (max-width: 768px) {
+    .carousel {
+        aspect-ratio: 2/3; /* Proporción aún más vertical en móviles */
+    }
+    
+    .carousel-btn {
+        padding: 10px;
+        font-size: 16px;
+    }
+}
 
