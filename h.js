@@ -7,8 +7,8 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
- 
-                document.addEventListener('DOMContentLoaded', function() {
+
+     document.addEventListener('DOMContentLoaded', function() {
     const fotos = document.querySelectorAll('.fotos img');
     const prevBtn = document.querySelector('.prev');
     const nextBtn = document.querySelector('.next');
@@ -44,10 +44,3 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 });
-
-
-            
-
-
-
-
