@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
     <title>Galería de Producto</title>
     <style>
         * {
@@ -20,13 +22,19 @@
         /* Estilos para el header */
         header {
             display: flex;
-            justify-content: flex-end;
+            justify-content: space-between;
+            align-items: center;
             padding: 15px 20px;
-            background-color: white;
+            background-color: rgb(240, 215, 234);
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             position: sticky;
             top: 0;
             z-index: 100;
+        }
+        
+        .logo {
+            font-weight: bold;
+            font-size: 1.2rem;
         }
         
         .button-container {
@@ -154,6 +162,65 @@
             font-weight: bold;
         }
         
+        /* Nuevos estilos para tallas y botón */
+        .size-selector {
+            margin: 20px 0;
+            text-align: center;
+        }
+        
+        .size-title {
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .size-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .size-btn {
+            padding: 8px 15px;
+            border: 1px solid #ddd;
+            background: white;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .size-btn:hover {
+            border-color: #ff6b6b;
+        }
+        
+        .size-btn.selected {
+            background: #ff6b6b;
+            color: white;
+            border-color: #ff6b6b;
+        }
+        
+        .add-to-cart-btn {
+            background: #ff6b6b;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 20px auto;
+            display: block;
+            transition: all 0.3s;
+        }
+        
+        .add-to-cart-btn:hover {
+            background: #e55a5a;
+        }
+        
+        .add-to-cart-btn.added {
+            background: #4CAF50;
+        }
+        
         @media (max-width: 768px) {
             .thumbnails {
                 padding: 10px;
@@ -184,7 +251,193 @@
             .button {
                 font-size: 1rem;
             }
+            
+            .size-buttons {
+                gap: 8px;
+            }
+            
+            .size-btn {
+                padding: 6px 12px;
+                font-size: 0.9rem;
+            }
+            
+            .add-to-cart-btn {
+                padding: 10px 25px;
+                font-size: 0.9rem;
+            }
         }
+    </style>
+    <!-- ESTILOS DEL CARRITO -->
+    <style>
+      /* ESTILOS DEL CARRITO */
+      .cart-icon {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: white;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        cursor: pointer;
+        z-index: 100;
+      }
+      
+      .cart-count {
+        position: absolute;
+        top: -5px;
+        right: -5px;
+        background: #e63946;
+        color: white;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+      }
+      
+      .cart-modal {
+        position: fixed;
+        top: 0;
+        right: -400px;
+        width: 350px;
+        height: 100%;
+        background: white;
+        box-shadow: -2px 0 10px rgba(218, 140, 153, 0.849);
+        transition: right 0.3s;
+        z-index: 1000;
+        overflow-y: auto;
+        padding: 20px;
+      }
+      
+      .cart-modal.active {
+        right: 0;
+      }
+      
+      .cart-header {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 20px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #eee;
+      }
+      
+      .close-cart {
+        font-size: 24px;
+        cursor: pointer;
+      }
+      
+      .cart-item {
+        display: flex;
+        margin-bottom: 15px;
+        padding-bottom: 15px;
+        border-bottom: 1px solid #eee;
+      }
+      
+      .cart-item img {
+        width: 60px;
+        height: 60px;
+        object-fit: cover;
+        margin-right: 10px;
+      }
+      
+      .cart-item-info {
+        flex-grow: 1;
+      }
+      
+      .cart-item-title {
+        font-weight: bold;
+        margin-bottom: 5px;
+      }
+      
+      .cart-item-price {
+        color: #e63946;
+        font-weight: bold;
+      }
+      
+      .cart-total {
+        font-weight: bold;
+        font-size: 18px;
+        margin: 20px 0;
+        text-align: right;
+      }
+      
+      .checkout-btn {
+        width: 100%;
+        padding: 12px;
+        background: #85787c;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+      }
+      
+      .payment-modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.5);
+        z-index: 2000;
+        justify-content: center;
+        align-items: center;
+      }
+      
+      .payment-content {
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        width: 90%;
+        max-width: 400px;
+      }
+      
+      .payment-options {
+        margin: 20px 0;
+      }
+      
+      .payment-option {
+        margin-bottom: 10px;
+      }
+      
+      .confirm-btn {
+        width: 100%;
+        padding: 10px;
+        background: #200911;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 10px;
+      }
+      
+      .overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.5);
+        z-index: 999;
+      }
+      
+      .overlay.active {
+        display: block;
+      }
+      
+      .remove-item {
+        cursor: pointer;
+        color: #777;
+        font-size: 1.2rem;
+      }
     </style>
 </head>
 <body>
@@ -204,7 +457,7 @@
                     <path d="M12 2.5a5.5 5.5 0 0 1 3.096 10.047 9.005 9.005 0 0 1 5.9 8.181.75.75 0 1 1-1.499.044 7.5 7.5 0 0 0-14.993 0 .75.75 0 0 1-1.5-.045 9.005 9.005 0 0 1 5.9-8.18A5.5 5.5 0 0 1 12 2.5ZM8 8a4 4 0 1 0 8 0 4 4 0 0 0-8 0Z"></path>
                 </svg>
             </button>
-            <button class="button">
+            <button class="button cart-button">
                 <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" stroke-linejoin="round" stroke-linecap="round" viewBox="0 0 24 24" stroke-width="2" fill="none" stroke="currentColor" class="icon">
                     <circle r="1" cy="21" cx="9"></circle>
                     <circle r="1" cy="21" cx="20"></circle>
@@ -219,7 +472,7 @@
         <!-- Miniaturas en la parte superior -->
         <div class="thumbnails">
             <div class="thumbnail active" onclick="showImage(1)">
-                <img src="falda.png" alt="Miniatura 1">
+                <img src="faldas.png" alt="Miniatura 1">
             </div>
             <div class="thumbnail" onclick="showImage(2)">
                 <img src="falda1.png" alt="Miniatura 2">
@@ -234,18 +487,80 @@
         
         <!-- Vista principal en el centro -->
         <div class="main-image-container">
-            <img id="mainImage1" class="main-image active" src="falda.png" alt="Imagen principal 1">
+            <img id="mainImage1" class="main-image active" src="faldas.png" alt="Imagen principal 1">
             <img id="mainImage2" class="main-image" src="falda1.png" alt="Imagen principal 2">
             <img id="mainImage3" class="main-image" src="falda2.png" alt="Imagen principal 3">
             <img id="mainImage4" class="main-image" src="falda3.png" alt="Imagen principal 4">
           
             <div class="product-info">
-                <span class="material">100% Algodón</span>
+                <h1 class="product-title">Falda</h1>
+                <div class="breadcrumb"> Ropa / Faldas</div>
+                <div class="product-details">
+                    <span class="material">100% Algodón</span>
+                    <span class="size">$283.63 MXN</span>
+                </div>
+                
+                <!-- Selector de tallas -->
+                <div class="size-selector">
+                    <div class="size-title">SELECCIONA TU TALLA</div>
+                    <div class="size-buttons">
+                        <button class="size-btn" data-size="XS">XS</button>
+                        <button class="size-btn" data-size="CH">CH</button>
+                        <button class="size-btn" data-size="M">M</button>
+                        <button class="size-btn" data-size="G">G</button>
+                        <button class="size-btn" data-size="XL">XL</button>
+                    </div>
+                </div>
+                
+                <!-- Botón de agregar al carrito -->
+                <button class="add-to-cart-btn">AGREGAR AL CARRITO</button>
             </div>
         </div>
     </div>
 
+    <!-- HTML del Carrito -->
+    <div class="cart-icon">
+      <i class="fas fa-shopping-cart"></i>
+      <span class="cart-count">0</span>
+    </div>
+
+    <div class="cart-modal">
+      <div class="cart-header">
+        <h3>Tu Carrito</h3>
+        <span class="close-cart">&times;</span>
+      </div>
+      <div class="cart-items"></div>
+      <div class="cart-total">
+        Total: <span class="total-amount">$0.00 MXN</span>
+      </div>
+      <button class="checkout-btn">Proceder al pago</button>
+    </div>
+
+    <div class="overlay"></div>
+
+    <div class="payment-modal">
+      <div class="payment-content">
+        <h3>Selecciona tu método de pago</h3>
+        <div class="payment-options">
+          <div class="payment-option">
+            <input type="radio" id="efectivo" name="payment" value="efectivo">
+            <label for="efectivo">Efectivo</label>
+          </div>
+          <div class="payment-option">
+            <input type="radio" id="tarjeta" name="payment" value="tarjeta">
+            <label for="tarjeta">Tarjeta</label>
+          </div>
+          <div class="payment-option">
+            <input type="radio" id="transferencia" name="payment" value="transferencia">
+            <label for="transferencia">Transferencia</label>
+          </div>
+        </div>
+        <button class="confirm-btn">Confirmar compra</button>
+      </div>
+    </div>
+
     <script>
+        // Función para cambiar imágenes
         function showImage(imageNumber) {
             // Ocultar todas las imágenes principales
             const mainImages = document.querySelectorAll('.main-image');
@@ -266,6 +581,169 @@
                 }
             });
         }
+        
+        // Funcionalidad del carrito
+        document.addEventListener('DOMContentLoaded', function() {
+          // Elementos del DOM
+          const cartIcon = document.querySelector('.cart-icon');
+          const cartModal = document.querySelector('.cart-modal');
+          const closeCart = document.querySelector('.close-cart');
+          const overlay = document.querySelector('.overlay');
+          const cartItemsContainer = document.querySelector('.cart-items');
+          const cartCount = document.querySelector('.cart-count');
+          const totalAmountElement = document.querySelector('.total-amount');
+          const checkoutBtn = document.querySelector('.checkout-btn');
+          const paymentModal = document.querySelector('.payment-modal');
+          const confirmBtn = document.querySelector('.confirm-btn');
+          const addToCartBtn = document.querySelector('.add-to-cart-btn');
+          const sizeButtons = document.querySelectorAll('.size-btn');
+          
+          // Variables del carrito
+          let cart = [];
+          let totalAmount = 0;
+          let selectedSize = null;
+          
+          // Seleccionar talla
+          sizeButtons.forEach(button => {
+              button.addEventListener('click', function() {
+                  // Quitar selección anterior
+                  sizeButtons.forEach(btn => btn.classList.remove('selected'));
+                  
+                  // Seleccionar nueva talla
+                  this.classList.add('selected');
+                  selectedSize = this.getAttribute('data-size');
+              });
+          });
+          
+          // Abrir/cerrar carrito
+          cartIcon.addEventListener('click', function() {
+              cartModal.classList.add('active');
+              overlay.classList.add('active');
+          });
+          
+          document.querySelector('.cart-button').addEventListener('click', function() {
+              cartModal.classList.add('active');
+              overlay.classList.add('active');
+          });
+          
+          closeCart.addEventListener('click', function() {
+              cartModal.classList.remove('active');
+              overlay.classList.remove('active');
+          });
+          
+          overlay.addEventListener('click', function() {
+              cartModal.classList.remove('active');
+              overlay.classList.remove('active');
+              paymentModal.style.display = 'none';
+          });
+          
+          // Agregar productos al carrito
+          addToCartBtn.addEventListener('click', function() {
+              if (!selectedSize) {
+                  alert('Por favor selecciona una talla');
+                  return;
+              }
+              
+              // Obtener información del producto
+              const productName = document.querySelector('.product-title').textContent;
+              const productPrice = 283.63; // Precio fijo según el HTML
+              const productImage = document.querySelector('.main-image.active').src;
+              
+              // Agregar al carrito
+              cart.push({
+                  name: `${productName} - Talla: ${selectedSize}`,
+                  price: productPrice,
+                  img: productImage
+              });
+              
+              updateCart();
+              
+              // Feedback visual
+              this.textContent = '✓ AGREGADO';
+              this.classList.add('added');
+              setTimeout(() => {
+                  this.textContent = 'AGREGAR AL CARRITO';
+                  this.classList.remove('added');
+              }, 2000);
+          });
+          
+          // Actualizar carrito
+          function updateCart() {
+              cartCount.textContent = cart.length;
+              cartItemsContainer.innerHTML = '';
+              totalAmount = 0;
+              
+              cart.forEach((item, index) => {
+                  totalAmount += item.price;
+                  
+                  const cartItem = document.createElement('div');
+                  cartItem.className = 'cart-item';
+                  cartItem.innerHTML = `
+                    <img src="${item.img}" alt="${item.name}">
+                    <div class="cart-item-info">
+                      <div class="cart-item-title">${item.name}</div>
+                      <div class="cart-item-price">$${item.price.toFixed(2)} MXN</div>
+                    </div>
+                    <div class="remove-item" data-index="${index}">&times;</div>
+                  `;
+                  cartItemsContainer.appendChild(cartItem);
+              });
+              
+              totalAmountElement.textContent = `$${totalAmount.toFixed(2)} MXN`;
+              
+              // Agregar evento para eliminar items
+              document.querySelectorAll('.remove-item').forEach(button => {
+                  button.addEventListener('click', function() {
+                      const index = this.getAttribute('data-index');
+                      cart.splice(index, 1);
+                      updateCart();
+                  });
+              });
+          }
+          
+          // Proceso de pago
+          checkoutBtn.addEventListener('click', function() {
+              if (cart.length === 0) {
+                  alert('Tu carrito está vacío');
+                  return;
+              }
+              
+              paymentModal.style.display = 'flex';
+          });
+          
+          confirmBtn.addEventListener('click', function() {
+              const selectedPayment = document.querySelector('input[name="payment"]:checked');
+              
+              if (!selectedPayment) {
+                  alert('Por favor selecciona un método de pago');
+                  return;
+              }
+              
+              const paymentMethod = selectedPayment.value;
+              let methodText = '';
+              
+              switch(paymentMethod) {
+                  case 'efectivo':
+                      methodText = 'Efectivo';
+                      break;
+                  case 'tarjeta':
+                      methodText = 'Tarjeta';
+                      break;
+                  case 'transferencia':
+                      methodText = 'Transferencia';
+                      break;
+              }
+              
+              alert(`¡Gracias por tu compra!\n\nTotal: $${totalAmount.toFixed(2)} MXN\nMétodo de pago: ${methodText}\n\nTu pedido será procesado.`);
+              
+              // Resetear carrito
+              cart = [];
+              updateCart();
+              paymentModal.style.display = 'none';
+              cartModal.classList.remove('active');
+              overlay.classList.remove('active');
+          });
+        });
+        
     </script>
 </body>
-</html>
