@@ -7,18 +7,19 @@
 
     <title>Galería de Producto</title>
     <style>
+        /* Estilos generales */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Arial', sans-serif;
         }
-        
+
         body {
             background-color: #f5f5f5;
             min-height: 100vh;
         }
-        
+
         /* Estilos para el header */
         header {
             display: flex;
@@ -31,17 +32,17 @@
             top: 0;
             z-index: 100;
         }
-        
+
         .logo {
             font-weight: bold;
             font-size: 1.2rem;
         }
-        
+
         .button-container {
             display: flex;
             gap: 15px;
         }
-        
+
         .button {
             background: none;
             border: none;
@@ -50,8 +51,8 @@
             font-size: 1.2rem;
             padding: 5px;
         }
-        
-        /* Estilos para la galería */
+
+        /* Estilos para la galería de productos */
         .product-gallery {
             display: flex;
             flex-direction: column;
@@ -63,7 +64,7 @@
             box-shadow: 0 0 20px rgba(0,0,0,0.1);
             overflow: hidden;
         }
-        
+
         .thumbnails {
             display: flex;
             justify-content: center;
@@ -73,7 +74,7 @@
             background: #f9f9f9;
             border-bottom: 1px solid #eee;
         }
-        
+
         .thumbnail {
             width: 80px;
             height: 80px;
@@ -84,21 +85,21 @@
             transition: all 0.3s;
             flex-shrink: 0;
         }
-        
+
         .thumbnail:hover {
             border-color: #ff6b6b;
         }
-        
+
         .thumbnail.active {
             border-color: #ff6b6b;
         }
-        
+
         .thumbnail img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
-        
+
         .main-image-container {
             display: flex;
             flex-direction: column;
@@ -107,7 +108,7 @@
             position: relative;
             min-height: 500px;
         }
-        
+
         .main-image {
             max-width: 100%;
             max-height: 500px;
@@ -115,72 +116,72 @@
             display: none;
             transition: opacity 0.3s;
         }
-        
+
         .main-image.active {
             display: block;
             animation: fadeIn 0.5s;
         }
-        
+
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
         }
-        
+
         .product-info {
             width: 100%;
             padding: 20px;
             text-align: center;
         }
-        
+
         .product-title {
             font-size: 1.5rem;
             margin-bottom: 10px;
             color: #333;
         }
-        
+
         .breadcrumb {
             font-size: 0.9rem;
             color: #777;
             margin-bottom: 15px;
         }
-        
+
         .product-details {
             display: flex;
             justify-content: center;
             gap: 20px;
             margin-bottom: 15px;
         }
-        
+
         .material {
             font-size: 1rem;
             color: #555;
         }
-        
+
         .size {
             font-size: 1rem;
             color: #ff6b6b;
             font-weight: bold;
         }
-        
-        /* Nuevos estilos para tallas y botón */
+
+        /* Estilos para el selector de tallas y el botón de añadir al carrito */
         .size-selector {
             margin: 20px 0;
             text-align: center;
         }
-        
+
         .size-title {
             margin-bottom: 10px;
             font-weight: bold;
             color: #333;
         }
-        
+
         .size-buttons {
             display: flex;
             justify-content: center;
             gap: 10px;
             flex-wrap: wrap;
         }
-        
+
         .size-btn {
             padding: 8px 15px;
             border: 1px solid #ddd;
@@ -189,17 +190,17 @@
             cursor: pointer;
             transition: all 0.3s;
         }
-        
+
         .size-btn:hover {
             border-color: #ff6b6b;
         }
-        
+
         .size-btn.selected {
             background: #ff6b6b;
             color: white;
             border-color: #ff6b6b;
         }
-        
+
         .add-to-cart-btn {
             background: #ff6b6b;
             color: white;
@@ -212,246 +213,294 @@
             display: block;
             transition: all 0.3s;
         }
-        
+
         .add-to-cart-btn:hover {
             background: #e55a5a;
         }
-        
+
         .add-to-cart-btn.added {
             background: #4CAF50;
         }
-        
+
+        /* Media queries para responsividad */
         @media (max-width: 768px) {
             .thumbnails {
                 padding: 10px;
             }
-            
+
             .thumbnail {
                 width: 60px;
                 height: 60px;
             }
-            
+
             .main-image-container {
                 padding: 20px;
                 min-height: 400px;
             }
-            
+
             .main-image {
                 max-height: 400px;
             }
-            
+
             .product-title {
                 font-size: 1.3rem;
             }
-            
+
             header {
                 padding: 10px;
             }
-            
+
             .button {
                 font-size: 1rem;
             }
-            
+
             .size-buttons {
                 gap: 8px;
             }
-            
+
             .size-btn {
                 padding: 6px 12px;
                 font-size: 0.9rem;
             }
-            
+
             .add-to-cart-btn {
                 padding: 10px 25px;
                 font-size: 0.9rem;
             }
         }
     </style>
-    <!-- ESTILOS DEL CARRITO -->
     <style>
-      /* ESTILOS DEL CARRITO */
-      .cart-icon {
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        background: white;
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        cursor: pointer;
-        z-index: 100;
-      }
-      
-      .cart-count {
-        position: absolute;
-        top: -5px;
-        right: -5px;
-        background: #e63946;
-        color: white;
-        width: 20px;
-        height: 20px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 12px;
-      }
-      
-      .cart-modal {
-        position: fixed;
-        top: 0;
-        right: -400px;
-        width: 350px;
-        height: 100%;
-        background: white;
-        box-shadow: -2px 0 10px rgba(218, 140, 153, 0.849);
-        transition: right 0.3s;
-        z-index: 1000;
-        overflow-y: auto;
-        padding: 20px;
-      }
-      
-      .cart-modal.active {
-        right: 0;
-      }
-      
-      .cart-header {
-        display: flex;
-        justify-content: space-between;
-        margin-bottom: 20px;
-        padding-bottom: 10px;
-        border-bottom: 1px solid #eee;
-      }
-      
-      .close-cart {
-        font-size: 24px;
-        cursor: pointer;
-      }
-      
-      .cart-item {
-        display: flex;
-        margin-bottom: 15px;
-        padding-bottom: 15px;
-        border-bottom: 1px solid #eee;
-      }
-      
-      .cart-item img {
-        width: 60px;
-        height: 60px;
-        object-fit: cover;
-        margin-right: 10px;
-      }
-      
-      .cart-item-info {
-        flex-grow: 1;
-      }
-      
-      .cart-item-title {
-        font-weight: bold;
-        margin-bottom: 5px;
-      }
-      
-      .cart-item-price {
-        color: #e63946;
-        font-weight: bold;
-      }
-      
-      .cart-total {
-        font-weight: bold;
-        font-size: 18px;
-        margin: 20px 0;
-        text-align: right;
-      }
-      
-      .checkout-btn {
-        width: 100%;
-        padding: 12px;
-        background: #85787c;
-        color: white;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        font-size: 16px;
-      }
-      
-      .payment-modal {
-        display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0,0,0,0.5);
-        z-index: 2000;
-        justify-content: center;
-        align-items: center;
-      }
-      
-      .payment-content {
-        background: white;
-        padding: 20px;
-        border-radius: 10px;
-        width: 90%;
-        max-width: 400px;
-      }
-      
-      .payment-options {
-        margin: 20px 0;
-      }
-      
-      .payment-option {
-        margin-bottom: 10px;
-      }
-      
-      .confirm-btn {
-        width: 100%;
-        padding: 10px;
-        background: #200911;
-        color: white;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        margin-top: 10px;
-      }
-      
-      .overlay {
-        display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0,0,0,0.5);
-        z-index: 999;
-      }
-      
-      .overlay.active {
-        display: block;
-      }
-      
-      .remove-item {
-        cursor: pointer;
-        color: #777;
-        font-size: 1.2rem;
-      }
+        .cart-icon {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            cursor: pointer;
+            z-index: 100;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: #e63946;
+            color: white;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+        }
+
+        .cart-modal {
+            position: fixed;
+            top: 0;
+            right: -400px;
+            width: 350px;
+            height: 100%;
+            background: white;
+            box-shadow: -2px 0 10px rgba(218, 140, 153, 0.849);
+            transition: right 0.3s;
+            z-index: 1000;
+            overflow-y: auto;
+            padding: 20px;
+        }
+
+        .cart-modal.active {
+            right: 0;
+        }
+
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .close-cart {
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .cart-item {
+            display: flex;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .cart-item img {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            margin-right: 10px;
+        }
+
+        .cart-item-info {
+            flex-grow: 1;
+        }
+
+        .cart-item-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .cart-item-price {
+            color: #e63946;
+            font-weight: bold;
+        }
+
+        .cart-total {
+            font-weight: bold;
+            font-size: 18px;
+            margin: 20px 0;
+            text-align: right;
+        }
+
+        .checkout-btn {
+            width: 100%;
+            padding: 12px;
+            background: #85787c;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .payment-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .payment-content {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 400px;
+        }
+
+        .payment-options {
+            margin: 20px 0;
+        }
+
+        .payment-option {
+            margin-bottom: 10px;
+        }
+
+        .confirm-btn {
+            width: 100%;
+            padding: 10px;
+            background: #200911;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 999;
+        }
+
+        .overlay.active {
+            display: block;
+        }
+
+        .remove-item {
+            cursor: pointer;
+            color: #777;
+            font-size: 1.2rem;
+        }
+
+        /* Estilos para el mensaje/modal de alerta */
+        .message-modal {
+            display: none; /* Oculto por defecto */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+        }
+
+        .message-content {
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            max-width: 300px;
+            width: 90%;
+            position: relative;
+        }
+
+        .message-content h3 {
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .message-content p {
+            margin-bottom: 20px;
+            color: #555;
+        }
+
+        .message-content button {
+            background: #ff6b6b;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background 0.3s;
+        }
+
+        .message-content button:hover {
+            background: #e55a5a;
+        }
     </style>
 </head>
 <body>
-    
-    <!-- Header con iconos en la parte superior -->
+
     <header>
-        <div class="logo">LEILANY  :)</div>
+        <div class="logo">LEILANY :)</div>
         <div class="button-container">
-            <button class="button" onclick="window.location.href='h.html'">
+            <button class="button" onclick="window.location.href='index.html'">
                 <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 1024 1024" stroke-width="0" fill="currentColor" stroke="currentColor" class="icon">
                     <path d="M946.5 505L560.1 118.8l-25.9-25.9a31.5 31.5 0 0 0-44.4 0L77.5 505a63.9 63.9 0 0 0-18.8 46c.4 35.2 29.7 63.3 64.9 63.3h42.5V940h691.8V614.3h43.4c17.1 0 33.2-6.7 45.3-18.8a63.6 63.6 0 0 0 18.7-45.3c0-17-6.7-33.1-18.8-45.2zM568 868H456V664h112v204zm217.9-325.7V868H632V640c0-22.1-17.9-40-40-40H432c-22.1 0-40 17.9-40 40v228H238.1V542.3h-96l370-369.7 23.1 23.1L882 542.3h-96.1z"></path>
                 </svg>
             </button>
-            
+
             <button class="button">
                 <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" stroke-width="0" fill="currentColor" stroke="currentColor" class="icon">
                     <path d="M12 2.5a5.5 5.5 0 0 1 3.096 10.047 9.005 9.005 0 0 1 5.9 8.181.75.75 0 1 1-1.499.044 7.5 7.5 0 0 0-14.993 0 .75.75 0 0 1-1.5-.045 9.005 9.005 0 0 1 5.9-8.18A5.5 5.5 0 0 1 12 2.5ZM8 8a4 4 0 1 0 8 0 4 4 0 0 0-8 0Z"></path>
@@ -467,9 +516,7 @@
         </div>
     </header>
 
-    <!-- Galería de productos -->
     <div class="product-gallery">
-        <!-- Miniaturas en la parte superior -->
         <div class="thumbnails">
             <div class="thumbnail active" onclick="showImage(1)">
                 <img src="chamarra.png" alt="Miniatura 1">
@@ -484,23 +531,21 @@
                 <img src="chamarra3.png" alt="Miniatura 4">
             </div>
         </div>
-        
-        <!-- Vista principal en el centro -->
+
         <div class="main-image-container">
             <img id="mainImage1" class="main-image active" src="chamarra.png" alt="Imagen principal 1">
             <img id="mainImage2" class="main-image" src="chamarra1.png" alt="Imagen principal 2">
             <img id="mainImage3" class="main-image" src="chamarra2.png" alt="Imagen principal 3">
             <img id="mainImage4" class="main-image" src="chamarra3.png" alt="Imagen principal 4">
-          
+
             <div class="product-info">
-                <h1 class="product-title">Chamarra</h1>
-                <div class="breadcrumb"> Ropa / Chamarras</div>
+                <h1 class="product-title">chamarra</h1>
+                <div class="breadcrumb"> Ropa / Chamarras </div>
                 <div class="product-details">
                     <span class="material">100% Algodón</span>
                     <span class="size">$457.7 MXN</span>
                 </div>
-                
-                <!-- Selector de tallas -->
+
                 <div class="size-selector">
                     <div class="size-title">SELECCIONA TU TALLA</div>
                     <div class="size-buttons">
@@ -511,66 +556,87 @@
                         <button class="size-btn" data-size="XL">XL</button>
                     </div>
                 </div>
-                
-                <!-- Botón de agregar al carrito -->
+
                 <button class="add-to-cart-btn">AGREGAR AL CARRITO</button>
             </div>
         </div>
     </div>
 
-    <!-- HTML del Carrito -->
     <div class="cart-icon">
-      <i class="fas fa-shopping-cart"></i>
-      <span class="cart-count">0</span>
+        <i class="fas fa-shopping-cart"></i>
+        <span class="cart-count">0</span>
     </div>
 
     <div class="cart-modal">
-      <div class="cart-header">
-        <h3>Tu Carrito</h3>
-        <span class="close-cart">&times;</span>
-      </div>
-      <div class="cart-items"></div>
-      <div class="cart-total">
-        Total: <span class="total-amount">$0.00 MXN</span>
-      </div>
-      <button class="checkout-btn">Proceder al pago</button>
+        <div class="cart-header">
+            <h3>Tu Carrito</h3>
+            <span class="close-cart">&times;</span>
+        </div>
+        <div class="cart-items"></div>
+        <div class="cart-total">
+            Total: <span class="total-amount">$0.00 MXN</span>
+        </div>
+        <button class="checkout-btn">Proceder al pago</button>
     </div>
 
     <div class="overlay"></div>
 
     <div class="payment-modal">
-      <div class="payment-content">
-        <h3>Selecciona tu método de pago</h3>
-        <div class="payment-options">
-          <div class="payment-option">
-            <input type="radio" id="efectivo" name="payment" value="efectivo">
-            <label for="efectivo">Efectivo</label>
-          </div>
-          <div class="payment-option">
-            <input type="radio" id="tarjeta" name="payment" value="tarjeta">
-            <label for="tarjeta">Tarjeta</label>
-          </div>
-          <div class="payment-option">
-            <input type="radio" id="transferencia" name="payment" value="transferencia">
-            <label for="transferencia">Transferencia</label>
-          </div>
+        <div class="payment-content">
+            <h3>Selecciona tu método de pago</h3>
+            <div class="payment-options">
+                <div class="payment-option">
+                    <input type="radio" id="efectivo" name="payment" value="efectivo">
+                    <label for="efectivo">Efectivo</label>
+                </div>
+                <div class="payment-option">
+                    <input type="radio" id="tarjeta" name="payment" value="tarjeta">
+                    <label for="tarjeta">Tarjeta</label>
+                </div>
+                <div class="payment-option">
+                    <input type="radio" id="transferencia" name="payment" value="transferencia">
+                    <label for="transferencia">Transferencia</label>
+                </div>
+            </div>
+            <button class="confirm-btn">Confirmar compra</button>
         </div>
-        <button class="confirm-btn">Confirmar compra</button>
-      </div>
+    </div>
+
+    <div class="message-modal" id="messageModal">
+        <div class="message-content">
+            <h3 id="messageTitle"></h3>
+            <p id="messageText"></p>
+            <button id="messageCloseBtn">Aceptar</button>
+        </div>
     </div>
 
     <script>
-        // Función para cambiar imágenes
+        // Función para mostrar un modal de mensaje personalizado
+        function showMessage(title, text) {
+            const messageModal = document.getElementById('messageModal');
+            document.getElementById('messageTitle').textContent = title;
+            document.getElementById('messageText').textContent = text;
+            messageModal.style.display = 'flex'; // Mostrar el modal
+            document.querySelector('.overlay').classList.add('active'); // Activar el overlay
+        }
+
+        // Event listener para cerrar el modal de mensaje
+        document.getElementById('messageCloseBtn').addEventListener('click', function() {
+            document.getElementById('messageModal').style.display = 'none'; // Ocultar el modal
+            document.querySelector('.overlay').classList.remove('active'); // Desactivar el overlay
+        });
+
+        // Función para cambiar imágenes en la galería
         function showImage(imageNumber) {
             // Ocultar todas las imágenes principales
             const mainImages = document.querySelectorAll('.main-image');
             mainImages.forEach(img => {
                 img.classList.remove('active');
             });
-            
+
             // Mostrar solo la imagen seleccionada
             document.getElementById(`mainImage${imageNumber}`).classList.add('active');
-            
+
             // Actualizar miniaturas activas
             const thumbnails = document.querySelectorAll('.thumbnail');
             thumbnails.forEach((thumb, index) => {
@@ -581,168 +647,190 @@
                 }
             });
         }
-        
+
         // Funcionalidad del carrito
         document.addEventListener('DOMContentLoaded', function() {
-          // Elementos del DOM
-          const cartIcon = document.querySelector('.cart-icon');
-          const cartModal = document.querySelector('.cart-modal');
-          const closeCart = document.querySelector('.close-cart');
-          const overlay = document.querySelector('.overlay');
-          const cartItemsContainer = document.querySelector('.cart-items');
-          const cartCount = document.querySelector('.cart-count');
-          const totalAmountElement = document.querySelector('.total-amount');
-          const checkoutBtn = document.querySelector('.checkout-btn');
-          const paymentModal = document.querySelector('.payment-modal');
-          const confirmBtn = document.querySelector('.confirm-btn');
-          const addToCartBtn = document.querySelector('.add-to-cart-btn');
-          const sizeButtons = document.querySelectorAll('.size-btn');
-          
-          // Variables del carrito
-          let cart = [];
-          let totalAmount = 0;
-          let selectedSize = null;
-          
-          // Seleccionar talla
-          sizeButtons.forEach(button => {
-              button.addEventListener('click', function() {
-                  // Quitar selección anterior
-                  sizeButtons.forEach(btn => btn.classList.remove('selected'));
-                  
-                  // Seleccionar nueva talla
-                  this.classList.add('selected');
-                  selectedSize = this.getAttribute('data-size');
-              });
-          });
-          
-          // Abrir/cerrar carrito
-          cartIcon.addEventListener('click', function() {
-              cartModal.classList.add('active');
-              overlay.classList.add('active');
-          });
-          
-          document.querySelector('.cart-button').addEventListener('click', function() {
-              cartModal.classList.add('active');
-              overlay.classList.add('active');
-          });
-          
-          closeCart.addEventListener('click', function() {
-              cartModal.classList.remove('active');
-              overlay.classList.remove('active');
-          });
-          
-          overlay.addEventListener('click', function() {
-              cartModal.classList.remove('active');
-              overlay.classList.remove('active');
-              paymentModal.style.display = 'none';
-          });
-          
-          // Agregar productos al carrito
-          addToCartBtn.addEventListener('click', function() {
-              if (!selectedSize) {
-                  alert('Por favor selecciona una talla');
-                  return;
-              }
-              
-              // Obtener información del producto
-              const productName = document.querySelector('.product-title').textContent;
-              const productPrice = 457.7; // Precio fijo según el HTML
-              const productImage = document.querySelector('.main-image.active').src;
-              
-              // Agregar al carrito
-              cart.push({
-                  name: `${productName} - Talla: ${selectedSize}`,
-                  price: productPrice,
-                  img: productImage
-              });
-              
-              updateCart();
-              
-              // Feedback visual
-              this.textContent = '✓ AGREGADO';
-              this.classList.add('added');
-              setTimeout(() => {
-                  this.textContent = 'AGREGAR AL CARRITO';
-                  this.classList.remove('added');
-              }, 2000);
-          });
-          
-          // Actualizar carrito
-          function updateCart() {
-              cartCount.textContent = cart.length;
-              cartItemsContainer.innerHTML = '';
-              totalAmount = 0;
-              
-              cart.forEach((item, index) => {
-                  totalAmount += item.price;
-                  
-                  const cartItem = document.createElement('div');
-                  cartItem.className = 'cart-item';
-                  cartItem.innerHTML = `
-                    <img src="${item.img}" alt="${item.name}">
-                    <div class="cart-item-info">
-                      <div class="cart-item-title">${item.name}</div>
-                      <div class="cart-item-price">$${item.price.toFixed(2)} MXN</div>
-                    </div>
-                    <div class="remove-item" data-index="${index}">&times;</div>
-                  `;
-                  cartItemsContainer.appendChild(cartItem);
-              });
-              
-              totalAmountElement.textContent = `$${totalAmount.toFixed(2)} MXN`;
-              
-              // Agregar evento para eliminar items
-              document.querySelectorAll('.remove-item').forEach(button => {
-                  button.addEventListener('click', function() {
-                      const index = this.getAttribute('data-index');
-                      cart.splice(index, 1);
-                      updateCart();
-                  });
-              });
-          }
-          
-          // Proceso de pago
-          checkoutBtn.addEventListener('click', function() {
-              if (cart.length === 0) {
-                  alert('Tu carrito está vacío');
-                  return;
-              }
-              
-              paymentModal.style.display = 'flex';
-          });
-          
-          confirmBtn.addEventListener('click', function() {
-              const selectedPayment = document.querySelector('input[name="payment"]:checked');
-              
-              if (!selectedPayment) {
-                  alert('Por favor selecciona un método de pago');
-                  return;
-              }
-              
-              const paymentMethod = selectedPayment.value;
-              let methodText = '';
-              
-              switch(paymentMethod) {
-                  case 'efectivo':
-                      methodText = 'Efectivo';
-                      break;
-                  case 'tarjeta':
-                      methodText = 'Tarjeta';
-                      break;
-                  case 'transferencia':
-                      methodText = 'Transferencia';
-                      break;
-              }
-              
-              alert(`¡Gracias por tu compra!\n\nTotal: $${totalAmount.toFixed(2)} MXN\nMétodo de pago: ${methodText}\n\nTu pedido será procesado.`);
-              
-              // Resetear carrito
-              cart = [];
-              updateCart();
-              paymentModal.style.display = 'none';
-              cartModal.classList.remove('active');
-              overlay.classList.remove('active');
-          });
+            // Elementos del DOM
+            const cartIcon = document.querySelector('.cart-icon');
+            const cartModal = document.querySelector('.cart-modal');
+            const closeCart = document.querySelector('.close-cart');
+            const overlay = document.querySelector('.overlay');
+            const cartItemsContainer = document.querySelector('.cart-items');
+            const cartCount = document.querySelector('.cart-count');
+            const totalAmountElement = document.querySelector('.total-amount');
+            const checkoutBtn = document.querySelector('.checkout-btn');
+            const paymentModal = document.querySelector('.payment-modal');
+            const confirmBtn = document.querySelector('.confirm-btn');
+            const addToCartBtn = document.querySelector('.add-to-cart-btn');
+            const sizeButtons = document.querySelectorAll('.size-btn');
+
+            // Variables del carrito
+            let cart = [];
+            let totalAmount = 0;
+            let selectedSize = null;
+
+            // Función para guardar el carrito en localStorage
+            function saveCartToLocalStorage() {
+                localStorage.setItem('shoppingCart', JSON.stringify(cart));
+            }
+
+            // Función para cargar el carrito desde localStorage
+            function loadCartFromLocalStorage() {
+                const storedCart = localStorage.getItem('shoppingCart');
+                if (storedCart) {
+                    cart = JSON.parse(storedCart);
+                    updateCart(); // Actualizar la UI con los datos cargados
+                }
+            }
+
+            // Seleccionar talla
+            sizeButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Quitar selección anterior
+                    sizeButtons.forEach(btn => btn.classList.remove('selected'));
+
+                    // Seleccionar nueva talla
+                    this.classList.add('selected');
+                    selectedSize = this.getAttribute('data-size');
+                });
+            });
+
+            // Abrir/cerrar carrito
+            cartIcon.addEventListener('click', function() {
+                cartModal.classList.add('active');
+                overlay.classList.add('active');
+            });
+
+            document.querySelector('.cart-button').addEventListener('click', function() {
+                cartModal.classList.add('active');
+                overlay.classList.add('active');
+            });
+
+            closeCart.addEventListener('click', function() {
+                cartModal.classList.remove('active');
+                overlay.classList.remove('active');
+            });
+
+            overlay.addEventListener('click', function() {
+                cartModal.classList.remove('active');
+                overlay.classList.remove('active');
+                paymentModal.style.display = 'none';
+                document.getElementById('messageModal').style.display = 'none'; // Asegurarse de cerrar el modal de mensaje también
+            });
+
+            // Agregar productos al carrito
+            addToCartBtn.addEventListener('click', function() {
+                if (!selectedSize) {
+                    showMessage('Error', 'Por favor selecciona una talla.');
+                    return;
+                }
+
+                // Obtener información del producto
+                const productName = document.querySelector('.product-title').textContent;
+                const productPrice = 457.7; // Precio fijo según el HTML
+                const productImage = document.querySelector('.main-image.active').src;
+
+                // Agregar al carrito
+                cart.push({
+                    name: `${productName} - Talla: ${selectedSize}`,
+                    price: productPrice,
+                    img: productImage
+                });
+
+                updateCart(); // Actualizar la UI y guardar en localStorage
+
+                // Feedback visual
+                this.textContent = '✓ AGREGADO';
+                this.classList.add('added');
+                setTimeout(() => {
+                    this.textContent = 'AGREGAR AL CARRITO';
+                    this.classList.remove('added');
+                }, 2000);
+            });
+
+            // Actualizar carrito (muestra los items y guarda en localStorage)
+            function updateCart() {
+                cartCount.textContent = cart.length;
+                cartItemsContainer.innerHTML = '';
+                totalAmount = 0;
+
+                cart.forEach((item, index) => {
+                    totalAmount += item.price;
+
+                    const cartItem = document.createElement('div');
+                    cartItem.className = 'cart-item';
+                    cartItem.innerHTML = `
+                        <img src="${item.img}" alt="${item.name}" onerror="this.onerror=null;this.src='https://placehold.co/60x60/CCCCCC/000000?text=No+Image';">
+                        <div class="cart-item-info">
+                            <div class="cart-item-title">${item.name}</div>
+                            <div class="cart-item-price">$${item.price.toFixed(2)} MXN</div>
+                        </div>
+                        <div class="remove-item" data-index="${index}">&times;</div>
+                    `;
+                    cartItemsContainer.appendChild(cartItem);
+                });
+
+                totalAmountElement.textContent = `$${totalAmount.toFixed(2)} MXN`;
+
+                // Guardar el carrito en localStorage después de cada actualización
+                saveCartToLocalStorage();
+
+                // Agregar evento para eliminar items
+                document.querySelectorAll('.remove-item').forEach(button => {
+                    button.addEventListener('click', function() {
+                        const index = this.getAttribute('data-index');
+                        cart.splice(index, 1);
+                        updateCart(); // Actualizar la UI y guardar en localStorage
+                    });
+                });
+            }
+
+            // Proceso de pago
+            checkoutBtn.addEventListener('click', function() {
+                if (cart.length === 0) {
+                    showMessage('Carrito Vacío', 'Tu carrito está vacío. Por favor, añade productos antes de proceder al pago.');
+                    return;
+                }
+
+                paymentModal.style.display = 'flex';
+            });
+
+            confirmBtn.addEventListener('click', function() {
+                const selectedPayment = document.querySelector('input[name="payment"]:checked');
+
+                if (!selectedPayment) {
+                    showMessage('Método de Pago', 'Por favor selecciona un método de pago.');
+                    return;
+                }
+
+                const paymentMethod = selectedPayment.value;
+                let methodText = '';
+
+                switch(paymentMethod) {
+                    case 'efectivo':
+                        methodText = 'Efectivo';
+                        break;
+                    case 'tarjeta':
+                        methodText = 'Tarjeta';
+                        break;
+                    case 'transferencia':
+                        methodText = 'Transferencia';
+                        break;
+                }
+
+                showMessage('¡Compra Exitosa!', `¡Gracias por tu compra!\n\nTotal: $${totalAmount.toFixed(2)} MXN\nMétodo de pago: ${methodText}\n\nTu pedido será procesado.`);
+
+                // Resetear carrito y guardar en localStorage
+                cart = [];
+                updateCart();
+                paymentModal.style.display = 'none';
+                cartModal.classList.remove('active');
+                overlay.classList.remove('active');
+            });
+
+            // Cargar el carrito al iniciar la página
+            loadCartFromLocalStorage();
         });
     </script>
 </body>
+</html>
