@@ -1,4 +1,4 @@
-.form { 
+.form {
     --input-text-color: #e0bfdb;
     --input-bg-color: #e9bac3de;
     --focus-input-bg-color: transparent;
@@ -137,6 +137,7 @@
         .logo {
             font-weight: bold;
             font-size: 1.2rem;
+            font-family:'Times New Roman', Times, serif
         }
         
         .button-container {
@@ -218,7 +219,7 @@
 
 /*cuadritos de arriba*/
 body {
-  font-family:'Times New Roman', Times, serif;
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   margin: 0;
   padding: 20px;
   background-color: #f8f9fa;
@@ -230,6 +231,7 @@ body {
   gap: 50px;
   max-width: 20000px;
   margin: 0 auto;
+  
 }
 
 .categoria {
@@ -240,7 +242,6 @@ body {
   text-align: center;
   transition: all 0.3s ease;
   padding: 12px 10px;
-  cursor: pointer;
   
 }
 
@@ -274,6 +275,7 @@ body {
   color: #333;
   text-align: center;
   padding: 0 3px;
+  font-family:'Times New Roman', Times, serif
 }
 
 /* Responsive */
@@ -389,13 +391,13 @@ h2 {
   transform: translateY(-3px);
 }
 
+* {
+  box-sizing: border-box;
+}
+
 .icon {
   font-size: 20px;
 }
-
-
-
-
 /*compra carrito*/
 /* Estilos generales */
 .products.container {
@@ -434,11 +436,11 @@ h2 {
 }
 
 /* Textos */
-.product-title h1 {
+.product-title h3 {
   font-family:Georgia, 'Times New Roman', Times, serif;
   font-size: 16px;
-  margin: 20px 0;
-  color: #b11046bb;
+  margin: 04px 0;
+  color: #110106;
 }
 
 
@@ -495,6 +497,9 @@ h2 {
   cursor: pointer;
 }
 
+
+
+
 /* Responsive */
 @media (max-width: 1200px) {
   .card-product { width: calc(25% - 20px); }
@@ -505,6 +510,7 @@ h2 {
 @media (max-width: 600px) {
   .card-product { width: calc(50% - 20px); }
 }
+
 
 /*encuentranos*/
 .wrapper {
@@ -797,3 +803,873 @@ svg {
   display: none;
 }
 
+
+  /* ESTILOS DEL CARRITO */
+  .cart-icon {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    cursor: pointer;
+    z-index: 100;
+  }
+  
+  .cart-count {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background: #e63946;
+    color: white;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+  }
+  
+  .cart-modal {
+    position: fixed;
+    top: 0;
+    right: -400px;
+    width: 350px;
+    height: 100%;
+    background: white;
+    box-shadow: -2px 0 10px rgba(218, 140, 153, 0.849);
+    transition: right 0.3s;
+    z-index: 1000;
+    overflow-y: auto;
+    padding: 20px;
+  }
+  
+  .cart-modal.active {
+    right: 0;
+  }
+  
+  .cart-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .close-cart {
+    font-size: 24px;
+    cursor: pointer;
+  }
+  
+  .cart-item {
+    display: flex;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .cart-item img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    margin-right: 10px;
+  }
+  
+  .cart-item-info {
+    flex-grow: 1;
+  }
+  
+  .cart-item-title {
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .cart-item-price {
+    color: #e63946;
+    font-weight: bold;
+  }
+  
+  .cart-total {
+    font-weight: bold;
+    font-size: 18px;
+    margin: 20px 0;
+    text-align: right;
+  }
+  
+  .checkout-btn {
+    width: 100%;
+    padding: 12px;
+    background: #85787c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .payment-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 2000;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .payment-content {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 400px;
+  }
+  
+  .payment-options {
+    margin: 20px 0;
+  }
+  
+  .payment-option {
+    margin-bottom: 10px;
+  }
+  
+  .confirm-btn {
+    width: 100%;
+    padding: 10px;
+    background: #200911;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  
+  .overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 999;
+  }
+  
+  .overlay.active {
+    display: block;
+  }
+ .formulario-contacto {
+  max-width: 600px;
+  margin: 60px auto;
+  padding: 30px;
+  border: 2px solid #c44569;
+  border-radius: 20px;
+  background-color: rgba(255, 255, 255, 0.9);
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.formulario-contacto h2 {
+  font-size: 24px;
+  color: #c44569;
+  margin-bottom: 20px;
+}
+
+.formulario-contacto input,
+.formulario-contacto textarea {
+  width: 90%;
+  padding: 12px;
+  margin: 10px 0;
+  border-radius: 12px;
+  border: 1px solid #ddd;
+  font-size: 16px;
+  background-color: #fff0f5;
+  outline: none;
+  transition: border 0.3s;
+}
+
+.formulario-contacto input:focus,
+.formulario-contacto textarea:focus {
+  border: 1px solid #c44569;
+  box-shadow: 0 0 5px #c44569;
+}
+
+.formulario-contacto button {
+  background-color: #c44569;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 12px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.formulario-contacto button:hover {
+  background-color: #a83855;
+}
+
+
+/*codigo de paris*/
+/* Colores sugeridos:
+   Rosa principal (botones): #FF69B4
+   Rosa secundario/claro (bordes, enfoque): #FFC0CB
+   Blanco (fondos): #FFFFFF
+   Negro (texto en botones): #000000
+   Gris oscuro (texto principal): #333333
+   Gris medio (texto secundario/labels): #555555
+   Gris muy claro (bordes sutiles): #EEEEEE
+*/
+
+/* Estilos para el botón "Envíame un Mensaje" (que abre el formulario) */
+.contact-form-trigger-btn {
+    /* Clave para centrar: */
+    display: block;   /* Asegura que el botón se comporte como un bloque y ocupe su propia línea */
+    margin-left: auto; /* Centra el botón horizontalmente */
+    margin-right: auto; /* Centra el botón horizontalmente */
+    width: fit-content; /* El botón solo ocupa el ancho de su contenido */
+    max-width: 90%; /* Evita que sea demasiado ancho en pantallas muy grandes */
+
+    /* Colores y diseño: */
+    background-color: #FF69B4; /* Rosa principal */
+    color: #000000; /* Letras negras */
+    padding: 12px 25px;
+    border: none;
+    border-radius: 30px;
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    margin-top: 25px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2); /* Sombra para profundidad */
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    
+    /* Para alinear el icono y el texto internamente, a pesar de display:block */
+    display: flex; /* Usamos flexbox para alinear contenido dentro del botón */
+    align-items: center;
+    justify-content: center; /* Esto ayuda a centrar el contenido del botón si el ancho es limitado */
+}
+
+.contact-form-trigger-btn:hover {
+    background-color: #E0509B; /* Rosa un poco más oscuro al pasar el ratón */
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+}
+
+.contact-form-trigger-btn i {
+    margin-right: 10px;
+    font-size: 1.2em;
+}
+
+
+/* Estilos para el modal de contacto */
+.contact-modal {
+    display: none;
+    position: fixed;
+    z-index: 1050;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    background-color: rgba(0, 0, 0, 0.6); /* Fondo semi-transparente oscuro */
+    padding: 20px 15px;
+}
+
+.contact-modal.visible {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.contact-modal-content {
+    background-color: #FFFFFF; /* Fondo blanco */
+    color: #333333; /* Texto principal oscuro */
+    margin: auto;
+    padding: 35px 40px;
+    border: 1px solid #EEEEEE; /* Borde muy sutil y claro */
+    border-radius: 15px;
+    width: 100%;
+    max-width: 550px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.25);
+    position: relative;
+    text-align: left;
+    animation: fadeInScale 0.3s ease-out forwards;
+}
+
+/* Animación para el modal */
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.contact-modal-content h2 {
+    text-align: center;
+    color: #FF69B4; /* Título en rosa principal */
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 2.2em;
+    font-family: 'Georgia', serif; /* Manteniendo un toque elegante */
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
+}
+
+.contact-modal-content p {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 1.05em;
+    color: #777777; /* Texto secundario gris */
+    line-height: 1.7;
+}
+
+/* Botón de cerrar modal */
+.close-contact-modal {
+    color: #FF69B4; /* Cruz de cerrar en rosa */
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 32px;
+    font-weight: normal;
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.close-contact-modal:hover,
+.close-contact-modal:focus {
+    color: #E0509B; /* Rosa más oscuro al pasar el ratón */
+    transform: rotate(90deg);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+/* Estilos para los campos del formulario */
+#contact-form .form-group {
+    margin-bottom: 22px;
+}
+
+#contact-form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    font-size: 0.95em;
+    color: #555555; /* Color para las etiquetas */
+}
+
+#contact-form .form-control {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid #DDDDDD; /* Borde claro */
+    border-radius: 8px;
+    background-color: #FFFFFF; /* Fondo blanco para los inputs */
+    color: #333333; /* Texto dentro de los inputs */
+    font-size: 1em;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#contact-form .form-control:focus {
+    border-color: #FFC0CB; /* Borde rosa claro al enfocar */
+    box-shadow: 0 0 0 0.2rem rgba(255, 192, 203, 0.5); /* Sombra rosa clara al enfocar */
+    outline: none;
+}
+
+#contact-form textarea.form-control {
+    resize: vertical;
+    min-height: 120px;
+}
+
+#contact-form .email-validation-error {
+    font-size: 0.85em;
+    margin-top: 5px;
+    color: #D32F2F; /* Rojo para errores */
+}
+
+#contact-form .char-counter {
+    display: block;
+    text-align: right;
+    font-size: 0.78em;
+    color: #999999; /* Gris claro para el contador de caracteres */
+    margin-top: 5px;
+}
+
+/* Botón de Enviar Mensaje dentro del formulario */
+#contact-form .submit-contact-btn {
+    /* Clave para centrar: */
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    max-width: 250px;
+
+    /* Colores y diseño: */
+    padding: 14px 25px;
+    background-color: #ff50a7; /* Rosa principal */
+    color: #000000; /* Letras negras */
+    border: none;
+    border-radius: 30px;
+    font-size: 1.15em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    margin-top: 25px; /* Espacio superior */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+#contact-form .submit-contact-btn:hover {
+    background-color: #E0509B; /* Rosa más oscuro al pasar el ratón */
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+}
+
+/*footer*/
+footer {
+    background-color: #FADADD; /* Rosa palo para el footer */
+    color: #333; /* Color de texto para contraste con el rosa */
+    padding: 20px 20px; /* Padding reducido para un footer más pequeño */
+    text-align: center;
+    /* Para el responsive, ya tiene display block y text-align center lo que ayuda a centrar sus elementos */
+}
+
+footer h2 {
+    margin-top: 0;
+    color: #333; /* Color de texto para contraste con el rosa */
+    font-size: 1.3em; /* Título un poco más pequeño */
+}
+
+/* --- Estilos para los iconos de redes sociales (Nuevos estilos) --- */
+.wrapper {
+    display: flex; /* Cambiado a flex para control moderno */
+    list-style: none;
+    height: auto; /* Ajustado a auto para adaptarse al contenido */
+    width: 100%;
+    padding-top: 15px; /* Ajustado el padding para el footer compacto */
+    font-family: "Poppins", sans-serif;
+    justify-content: center;
+    gap: 15px; /* Espacio entre iconos */
+    margin: 0 auto 20px auto; /* Centrar y añadir margen inferior */
+    flex-wrap: wrap; /* Añadido para que los iconos se envuelvan en pantallas pequeñas */
+}
+
+.wrapper .icon {
+    position: relative;
+    background: #fff;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 18px; /* Tamaño del icono SVG */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    color: #333; /* Color inicial del icono */
+}
+
+.wrapper .tooltip {
+    position: absolute;
+    top: 0;
+    font-size: 14px;
+    background: #fff; /* Fondo inicial del tooltip */
+    color: #fff; /* Color inicial del texto del tooltip */
+    padding: 5px 8px;
+    border-radius: 5px;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    white-space: nowrap; /* Evita que el texto del tooltip se rompa */
+}
+
+.wrapper .tooltip::before {
+    position: absolute;
+    content: "";
+    height: 8px;
+    width: 8px;
+    background: #fff; /* Fondo inicial de la flecha del tooltip */
+    bottom: -3px;
+    left: 50%;
+    transform: translate(-50%) rotate(45deg);
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.wrapper .icon:hover .tooltip {
+    top: -45px;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.wrapper .icon:hover span,
+.wrapper .icon:hover .tooltip {
+    text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.1);
+}
+
+/* Colores al pasar el ratón para Facebook */
+.wrapper .facebook:hover,
+.wrapper .facebook:hover .tooltip,
+.wrapper .facebook:hover .tooltip::before {
+    background: #1877f2;
+    color: #fff;
+}
+
+/* Colores al pasar el ratón para Instagram */
+.wrapper .instagram:hover,
+.wrapper .instagram:hover .tooltip,
+.wrapper .instagram:hover .tooltip::before {
+    background: #c21e91; /* Un rosa/morado más específico para Instagram */
+    color: #fff;
+}
+
+/* Asegurarse que el SVG se vea correctamente */
+.social-link svg {
+    display: block; /* Para que el SVG respete su tamaño */
+}
+
+/* --- Estilos para el botón "Envíame un Mensaje" (Trigger Button - Estilos de Paris) --- */
+.contact-form-trigger-btn {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: fit-content;
+    max-width: 90%; /* Ajuste para pantallas pequeñas */
+    background-color: #FF69B4;
+    color: #000000;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 30px;
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    margin-top: 25px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.contact-form-trigger-btn:hover {
+    background-color: #E0509B;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+}
+
+.contact-form-trigger-btn i {
+    margin-right: 10px;
+    font-size: 1.2em;
+}
+
+/* --- Estilos para el Modal de Contacto y sus elementos (Estilos de Paris) --- */
+.contact-modal {
+    display: none;
+    position: fixed;
+    z-index: 1050;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 20px 15px;
+}
+
+.contact-modal.visible {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.contact-modal-content {
+    background-color: #FFFFFF;
+    color: #333333;
+    margin: auto;
+    padding: 35px 40px;
+    border: 1px solid #EEEEEE;
+    border-radius: 15px;
+    width: 100%;
+    max-width: 550px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.25);
+    position: relative;
+    text-align: left;
+    animation: fadeInScale 0.3s ease-out forwards;
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.contact-modal-content h2 {
+    text-align: center;
+    color: #FF69B4;
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 2.2em;
+    font-family: 'Georgia', serif;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
+}
+
+.contact-modal-content p {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 1.05em;
+    color: #777777;
+    line-height: 1.7;
+}
+
+.close-contact-modal {
+    color: #FF69B4;
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 32px;
+    font-weight: normal;
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.close-contact-modal:hover,
+.close-contact-modal:focus {
+    color: #E0509B;
+    transform: rotate(90deg);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#contact-form .form-group {
+    margin-bottom: 22px;
+}
+
+#contact-form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    font-size: 0.95em;
+    color: #555555;
+}
+
+#contact-form .form-control {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid #DDDDDD;
+    border-radius: 8px;
+    background-color: #FFFFFF;
+    color: #333333;
+    font-size: 1em;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#contact-form .form-control:focus {
+    border-color: #FFC0CB;
+    box-shadow: 0 0 0 0.2rem rgba(255, 192, 203, 0.5);
+    outline: none;
+}
+
+#contact-form textarea.form-control {
+    resize: vertical;
+    min-height: 120px;
+}
+
+#contact-form .email-validation-error {
+    font-size: 0.85em;
+    margin-top: 5px;
+    color: #D32F2F;
+}
+
+#contact-form .char-counter {
+    display: block;
+    text-align: right;
+    font-size: 0.78em;
+    color: #999999;
+    margin-top: 5px;
+}
+
+#contact-form .submit-contact-btn {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    max-width: 250px;
+    padding: 14px 25px;
+    background-color: #ff50a7;
+    color: #000000;
+    border: none;
+    border-radius: 30px;
+    font-size: 1.15em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    margin-top: 25px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+#contact-form .submit-contact-btn:hover {
+    background-color: #E0509B;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+}
+
+/* --- Media Queries para Responsividad --- */
+
+/* Para pantallas más pequeñas (teléfonos móviles) */
+@media (max-width: 768px) {
+    footer {
+        padding: 15px 10px; /* Menos padding en pantallas pequeñas */
+    }
+
+    footer h2 {
+        font-size: 1.1em; /* Título un poco más pequeño en móviles */
+    }
+
+    .wrapper {
+        gap: 10px; /* Reduce el espacio entre iconos en pantallas pequeñas */
+        padding-top: 10px;
+        margin-bottom: 15px;
+    }
+
+    .wrapper .icon {
+        width: 45px; /* Iconos ligeramente más pequeños */
+        height: 45px;
+        font-size: 16px;
+    }
+
+    .wrapper .tooltip {
+        font-size: 12px; /* Texto del tooltip más pequeño */
+        padding: 4px 6px;
+    }
+
+    .wrapper .icon:hover .tooltip {
+        top: -40px; /* Ajusta la posición del tooltip */
+    }
+
+    .contact-form-trigger-btn {
+        font-size: 1em; /* Botón de mensaje más pequeño */
+        padding: 10px 20px;
+        max-width: 95%; /* Permite que el botón ocupe más ancho en pantallas pequeñas */
+        margin-top: 20px;
+    }
+
+    .contact-form-trigger-btn i {
+        font-size: 1.1em; /* Icono del botón un poco más pequeño */
+        margin-right: 8px;
+    }
+
+    .contact-modal-content {
+        padding: 25px 25px; /* Menos padding en el modal de contacto */
+        max-width: 90%; /* El modal ocupa más ancho en pantallas pequeñas */
+    }
+
+    .contact-modal-content h2 {
+        font-size: 1.8em; /* Título del modal más pequeño */
+        margin-bottom: 15px;
+    }
+
+    .contact-modal-content p {
+        font-size: 0.95em; /* Párrafo del modal más pequeño */
+        margin-bottom: 20px;
+    }
+
+    .close-contact-modal {
+        font-size: 28px; /* Botón de cerrar modal más pequeño */
+        top: 10px;
+        right: 15px;
+    }
+
+    #contact-form label {
+        font-size: 0.9em; /* Etiquetas del formulario más pequeñas */
+    }
+
+    #contact-form .form-control {
+        padding: 10px 12px; /* Campos de formulario más pequeños */
+        font-size: 0.9em;
+    }
+
+    #contact-form textarea.form-control {
+        min-height: 100px; /* Altura mínima del textarea */
+    }
+
+    #contact-form .submit-contact-btn {
+        font-size: 1.05em; /* Botón de enviar formulario más pequeño */
+        padding: 12px 20px;
+        width: 90%; /* Ocupa más ancho en el formulario */
+        margin-top: 20px;
+    }
+}
+
+/* Para pantallas muy pequeñas (teléfonos móviles extra pequeños) */
+@media (max-width: 480px) {
+    .wrapper .icon {
+        width: 40px; /* Iconos aún más pequeños */
+        height: 40px;
+        font-size: 14px;
+    }
+
+    .wrapper .tooltip {
+        font-size: 11px;
+    }
+
+    .contact-form-trigger-btn {
+        font-size: 0.9em; /* Botón de mensaje aún más pequeño */
+        padding: 8px 15px;
+    }
+
+    .contact-form-trigger-btn i {
+        font-size: 1em;
+        margin-right: 5px;
+    }
+
+    .contact-modal-content {
+        padding: 20px; /* Padding reducido en el modal */
+    }
+
+    .contact-modal-content h2 {
+        font-size: 1.6em;
+    }
+
+    .contact-modal-content p {
+        font-size: 0.9em;
+    }
+
+    #contact-form .form-control {
+        padding: 8px 10px;
+        font-size: 0.85em;
+    }
+
+    #contact-form textarea.form-control {
+        min-height: 80px;
+    }
+
+    #contact-form .submit-contact-btn {
+        font-size: 1em;
+        padding: 10px 15px;
+    }
+}
